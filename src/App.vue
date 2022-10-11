@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home">
+    <div class="canvas-container" ref="canvasDom"></div>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import * as THREE from "three";
+// import { onMounted,reactive, ref } from "vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+//创建场景
+const scene = new THREE.Scene()
+//创建相机
+const camera = new THREE.PerspectiveCamera(
+  75,window.innerWidth/window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.set(0,2,6)
+
+//创建渲染器
+const renderer = new THREE.WebGLRenderer()
+
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
